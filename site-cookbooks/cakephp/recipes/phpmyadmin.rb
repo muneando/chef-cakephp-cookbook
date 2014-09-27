@@ -24,19 +24,7 @@ include_recipe  'yum-epel'
   end
 end
 
-execute "httpd_restart" do
-  command "/etc/init.d/httpd restart"
-  action :nothing
+web_app "phpMyAdmin.conf" do
+  template "phpMyAdmin.conf.erb"
 end
 
-cookbook_file "/etc/httpd/sites-available/phpMyAdmin.conf" do
-  owner 'root'
-  group 'root'
-  mode '0644'
-end
-
-execute "site-phpmyadmin-snsite" do
-    command "a2ensite phpMyAdmin"
-    not_if { ::File.exists?("/etc/httpd/sites-enable/phpMyAdmin.conf")}
-    notifies :restart, "service[apache2]", :immediately
-end

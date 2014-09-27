@@ -17,6 +17,10 @@
 # limitations under the License.
 #
 
+include_recipe 'apache2'
+include_recipe 'apache2::mod_php5'
+include_recipe 'apache2::mod_rewrite'
+
 include_recipe 'yum'
 
 include_recipe 'cakephp::iptables'
@@ -26,9 +30,7 @@ include_recipe 'cakephp::database'
 include_recipe 'cakephp::cakephp'
 
 # apache2のレシピを読み込んで、デフォルトのVirtualHostを無効にする。
-include_recipe 'apache2'
-include_recipe 'apache2::mod_php5'
-include_recipe 'apache2::mod_rewrite'
+
 execute "a2dissite default"
 
 # コピーしたVirtualHostのテンプレートを設定する。
