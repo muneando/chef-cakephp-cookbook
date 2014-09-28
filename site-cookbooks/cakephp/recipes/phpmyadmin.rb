@@ -24,7 +24,7 @@ include_recipe  'yum-epel'
   end
 end
 
-web_app "phpMyAdmin.conf" do
+web_app "phpMyAdmin" do
   template "phpMyAdmin.conf.erb"
 end
 
