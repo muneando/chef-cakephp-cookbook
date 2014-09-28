@@ -3,6 +3,6 @@
         "phpunit/phpunit": "3.7.*"
     },
     "config": {
-        "vendor-dir": "app/Vendor/"
+        "vendor-dir": "../app/Vendor/"
     }
 }

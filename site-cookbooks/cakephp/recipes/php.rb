@@ -39,6 +39,6 @@ end
 
 # Composerを使ってライブラリをインストール
 execute "composer-lib-install" do
-  command "composer install"
+  command "composer install -d " + node['composer_dir']
   not_if { ::File.exists?("/vagrant/app/Vendor/phpunit/phpunit/phpunit.php")}
 end
