@@ -54,7 +54,7 @@ end
 
 execute  'import db' do
   command 'gunzip -c ' + node['mysql']['import_zip_file'] + ' | mysql -u admin -padmin ' + node['product_name']
-  not_if { ::File.exists?(node['mysql']['import_zip_file'])}
+  only_if { ::File.exists?(node['mysql']['import_zip_file'])}
   creates "/var/lib/mysql/' + node['product_name'] + '/baser_contents.MYD"
 end
 
