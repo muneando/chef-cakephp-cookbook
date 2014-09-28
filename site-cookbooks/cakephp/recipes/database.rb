@@ -48,10 +48,13 @@ mysql_database_user node['product_name'] do
   action [:create, :grant]
 end
 
-# mysqldump -u admin -padmin PRODUCT_NAME | gzip > /vagrant/scripts/mysql.sql.gz
+# 用意しているバックアップファイル（ZIP）からデータベースに初期データを投入する。
+# バックアックの例
+#   mysqldump -u admin -padmin PRODUCT_NAME | gzip > /vagrant/scripts/mysql.sql.gz
 
 execute  'import db' do
-  command 'gunzip -c /vagrant/scripts/mysql.sql.gz | mysql -u admin -padmin ' + node['product_name']
+  command 'gunzip -c ' + node['mysql']['import_zip_file'] + ' | mysql -u admin -padmin ' + node['product_name']
+  not_if { ::File.exists?(node['mysql']['import_zip_file'])}
   creates "/var/lib/mysql/' + node['product_name'] + '/baser_contents.MYD"
 end
 
