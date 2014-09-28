@@ -20,6 +20,10 @@
 include_recipe 'php'
 include_recipe 'php::module_mysql'
 
+package "php-mcrypt" do
+    action :install
+end
+
 # Composerのインストール
 execute "composer-install" do
   command "curl -sS https://getcomposer.org/installer | php ;mv composer.phar /usr/local/bin/composer"
