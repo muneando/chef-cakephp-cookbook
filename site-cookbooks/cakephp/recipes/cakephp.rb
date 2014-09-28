@@ -30,21 +30,5 @@ template "/vagrant/app/Config/database.php" do
     :prefix => node[:cakephp][:database][:prefix],
     :encoding=> node[:cakephp][:database][:encoding]
   })
-end
-
-template "/vagrant/app/Config/core.php" do
-  source "cakephp/core.php.erb"
-  mode 0660
-  owner "vagrant"
-  group "vagrant"
-  variables({
-    :debug=> node[:cakephp][:core][:debug],
-  })
-end
-
-template "/vagrant/app/Config/bootstrap.php" do
-  source "cakephp/bootstrap.php.erb"
-  mode 0660
-  owner "vagrant"
-  group "vagrant"
+  only_if { ::File.exists?("/vagrant/app/Config/database.php")}
 end
