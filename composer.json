@@ -1,8 +1,15 @@
 {
-    "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+    "name": "chef-cakephp-cookbook",
+     "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.cakephp.org"
+        }
+    ],
+    "require": {
+        "cakephp/cakephp": ">=2.4.9"
     },
     "config": {
-        "vendor-dir": "../app/Vendor/"
+        "vendor-dir": "../Vendor/"
     }
 }
