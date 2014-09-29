@@ -43,6 +43,6 @@ end
 
 # Composerを使ってライブラリをインストール
 execute "composer-lib-install" do
-  command "composer install -d " + node['composer_dir']
-  not_if { ::File.exists?("/vagrant/app/Vendor/phpunit/phpunit/phpunit.php")}
+  command "composer install -d /vagrant"
+  only_if { ::File.exists?("/vagrant/composer.json")}
 end
