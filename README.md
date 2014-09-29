@@ -118,9 +118,6 @@ chef.json = {
     :server_root_password => PRODUCT_NAME,
     :server_repl_password => PRODUCT_NAME,
     :server_debian_password => PRODUCT_NAME
-  },
-  :php => { # opscode-cookbooks/phpクックブックの設定
-    :timezone => 'Asia/Tokyo'
   }
 }
 ```

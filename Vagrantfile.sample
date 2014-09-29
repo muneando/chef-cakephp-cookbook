@@ -38,9 +38,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         :server_root_password => PRODUCT_NAME,
         :server_repl_password => PRODUCT_NAME,
         :server_debian_password => PRODUCT_NAME
-      },
-      :php => {
-        :timezone => 'Asia/Tokyo'
       }
     }
   end

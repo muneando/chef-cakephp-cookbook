@@ -27,4 +27,4 @@ default['cakephp']['database']['encoding'] = 'utf8'
 default['cakephp']['core']['debug'] = 2
 
 default['mysql']['import_zip_file'] = '/vagrant/scripts/mysql.sql.gz'
-
+default['php']['directives'] = { "date.timezone" => "Asia/Tokyo" }
