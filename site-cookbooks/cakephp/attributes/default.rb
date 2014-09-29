@@ -21,7 +21,7 @@ default['cakephp']['database']['host'] = 'localhost'
 default['cakephp']['database']['login'] = node['product_name']
 default['cakephp']['database']['password'] = node['product_name']
 default['cakephp']['database']['database'] = node['product_name']
-default['cakephp']['database']['prefix'] = 'baser'
+default['cakephp']['database']['prefix'] = ''
 default['cakephp']['database']['encoding'] = 'utf8'
 
 default['cakephp']['core']['debug'] = 2
