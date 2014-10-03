@@ -17,32 +17,22 @@
 # limitations under the License.
 #
 
-include_recipe 'php'
-include_recipe 'php::module_mysql'
-
-package "php-mcrypt" do
+#
+# Cookbook Name:: php54
+# Recipe:: php
+#
+# Copyright 2014, mune ando
+#
+# All rights reserved - Do Not Redistribute
+#
+  
+%w(php php-devel php-cli php-pear php-mbstring php-intl php-mcrypt).each do |package|
+  yum_package package do
     action :install
+    options "--enablerepo=remi"
+  end
 end
 
-# Composerのインストール
-execute "composer-install" do
-  command "curl -sS https://getcomposer.org/installer | php ;mv composer.phar /usr/local/bin/composer"
-  not_if { ::File.exists?("/usr/local/bin/composer")}
-end
+include_recipe "php::ini"
 
-# install the xdebug pecl
-php_pear "xdebug" do
-  # Specify that xdebug.so must be loaded as a zend extension
-  zend_extensions ['xdebug.so']
-  action :install
-end
-
-package "php-xml" do
-  action :install
-end
-
-# Composerを使ってライブラリをインストール
-execute "composer-lib-install" do
-  command "composer install -d /vagrant"
-  only_if { ::File.exists?("/vagrant/composer.json")}
-end
+include_recipe "apache2::mod_php5"

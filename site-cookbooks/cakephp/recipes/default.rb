@@ -17,26 +17,11 @@
 # limitations under the License.
 #
 
-include_recipe 'apache2'
-include_recipe 'apache2::mod_php5'
-include_recipe 'apache2::mod_rewrite'
-
-include_recipe 'yum'
-
+include_recipe 'cakephp::yum'
+include_recipe 'cakephp::apache'
 include_recipe 'cakephp::iptables'
 include_recipe 'cakephp::php'
+include_recipe 'cakephp::mysql'
 include_recipe 'cakephp::phpmyadmin'
-include_recipe 'cakephp::database'
+include_recipe 'cakephp::composer'
 include_recipe 'cakephp::cakephp'
-
-# apache2のレシピを読み込んで、デフォルトのVirtualHostを無効にする。
-
-execute "a2dissite default"
-
-# コピーしたVirtualHostのテンプレートを設定する。
-web_app node['product_name'] do
-  server_name node['hostname']
-  server_aliases [node['fqdn'], node['product_name']]
-  docroot "/vagrant/app/webroot/"
-  allow_override "All"
-end
