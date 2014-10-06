@@ -30,5 +30,5 @@ template "/vagrant/app/Config/database.php" do
     :prefix => node[:cakephp][:database][:prefix],
     :encoding=> node[:cakephp][:database][:encoding]
   })
-  only_if { ::File.exists?("/vagrant/app/Config/database.php")}
+  not_if { ::File.exists?("/vagrant/app/Config/database.php")}
 end
