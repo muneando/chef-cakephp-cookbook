@@ -31,8 +31,9 @@ end
 
 mysql_database_user "admin" do
   connection mysql_connection_info
-  password "admin"
+  password node['product_name']
   database_name node['product_name']
+	host '%'
   privileges [:all]
   action [:create, :grant]
 end
