@@ -1,3 +1,11 @@
 source 'https://api.berkshelf.com'
 
+cookbook 'apache2'
+cookbook 'iptables'
+cookbook "mysql"
+cookbook "database"
+cookbook 'php'
+cookbook 'vim'
+cookbook 'yum'
+
 cookbook 'cakephp', path: './chef/site-cookbooks/cakephp'
